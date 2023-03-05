@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../../context/user.context';
 import { PostService } from '../services/posts.service';
 import { CommentService } from '../services/comments.service';
+import AddPost from './AddPost';
 
 const Posts = () => {
+
 const navigate = useNavigate();
+
+const [clicked, setclicked] = useState(false);
   const [comments, setcomments] = useState([]);
   const { currentUser } = useContext(UserContext);
   const [posts,setPosts] = useState([]);
@@ -13,6 +17,15 @@ const navigate = useNavigate();
   const SeeComments = async (id) => {
     // navigate(`./Comments/?postID=${id}`, { state: { body } });
     navigate(`./Comments/?postID=${id}`);
+  };
+
+  const addPOST = () => {
+    setclicked(!clicked);
+  };
+
+  const setPostContent = (newPostArray) => {
+    setPosts([newPostArray, ...posts]);
+    // console.log(PostsArray);
   };
 
   useEffect(() => {
@@ -39,6 +52,7 @@ const navigate = useNavigate();
 
   return (
     <>
+    {clicked && <AddPost onAddPost={setPostContent} onBTNCLICK={addPOST} />}
     <div>
     <div >
     <h1 >Discover</h1>
@@ -69,6 +83,7 @@ const navigate = useNavigate();
             <hr  />
         </div>
    ))}
+   <button type='button' onClick={addPOST}/>
    </>
   );
 };
