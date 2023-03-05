@@ -1,11 +1,6 @@
 import React from "react";
 import Login from "../views/login/components/login";
 
-const LoginLayout = ()=>{
-    return(
-        
-        <Login/>
-        )
-};
+const LoginLayout = () => <Login />;
 
 export default LoginLayout;

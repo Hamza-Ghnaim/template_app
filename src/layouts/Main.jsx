@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import {MainRouter} from "../routers"
 import { useNavigate, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -19,6 +20,17 @@ const MainLayout = ()=>{
             <Route path = '/' element={<Navigate replace to='/login'/>} />
         </Routes>
         )
+=======
+import { useNavigate, Routes, Route, Navigate } from "react-router-dom";
+// import {Main}
+
+const MainLayout = () => {
+  return (
+    <Routes>
+      <Route></Route>
+    </Routes>
+  );
+>>>>>>> d4be98e54dc149273535d7299b27082efb7fe03c
 };
 
 export default MainLayout;
