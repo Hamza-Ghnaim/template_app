@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect,Fragment } from 'react';
 // import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../../context/user.context';
 import { PostService } from '../services/posts.service';
-import { CommentService } from '../services/comments.service';
 import AddPost from './AddPost';
 import Post from './post';
 
@@ -11,7 +10,6 @@ const Posts = () => {
 // const navigate = useNavigate();
 
 const [clicked, setclicked] = useState(false);
-  // const [comments, setcomments] = useState([]);
   const { currentUser } = useContext(UserContext);
   const [posts,setPosts] = useState([]);
 
@@ -31,10 +29,9 @@ const [clicked, setclicked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      let [postsData, commentsData] = await Promise.all([
-        PostService.list(),
-        CommentService.list(),
-      ]);
+      let postsData = await PostService.list();
+        // CommentService.list(),
+
 
       // postsData = await postsData.filter(
       //   item => item.userId === currentUser?.id,

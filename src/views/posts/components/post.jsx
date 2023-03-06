@@ -7,10 +7,10 @@ import NewComment from "./newcomments";
 
 const Post = (props) => {
     const { currentUser } = useContext(UserContext);
-    // const navigate = useNavigate();
-//   const SeeComments = async (id) => {
-//     navigate(`./Comments/?postID=${id}`);
-//   };
+    const navigate = useNavigate();
+  const SeeComments = async (id) => {
+    navigate(`./comments/?postID=${id}`);
+  };
 
   return (
     <Fragment>
@@ -22,10 +22,8 @@ const Post = (props) => {
             <h5 >@{currentUser.username}</h5>
           </div>
         </div>
-        {/* <p
-          onClick={() => SeeComments(props.data.id)}
-        > */}
         <p
+          onClick={() => SeeComments(props.data.id)}
         >
           {props.data.body}
         </p>
