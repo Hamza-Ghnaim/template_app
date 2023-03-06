@@ -1,6 +1,7 @@
 import React, { Fragment,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../../context/user.context';
+import NewComment from "./newcomments";
 
 // import NewComment from "../Comments/NewComment";
 
@@ -30,7 +31,7 @@ const Post = (props) => {
         </p>
         <hr  />
         <div >See Comments</div>
-        {/* <NewComment /> */}
+        <NewComment />
         <hr />
       </div>
     </Fragment>
