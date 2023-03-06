@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect,Fragment } from 'react';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../../context/user.context';
 import { PostService } from '../services/posts.service';
 import { CommentService } from '../services/comments.service';
-// import AddPost from './AddPost';
+import AddPost from './AddPost';
 import Post from './post';
 
 const Posts = () => {
@@ -24,10 +24,10 @@ const [clicked, setclicked] = useState(false);
     setclicked(!clicked);
   };
 
-  // const setPostContent = (newPostArray) => {
-  //   setPosts([newPostArray, ...posts]);
-  //   // console.log(PostsArray);
-  // };
+  const setPostContent = (newPostArray) => {
+    setPosts([newPostArray, ...posts]);
+    // console.log(PostsArray);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +42,7 @@ const [clicked, setclicked] = useState(false);
 
       setPosts(await [...postsData.filter(
         item => item.userId === currentUser?.id,
-      )])
+      ),...posts])
 
     //   setcomments(
     //     comments
@@ -57,7 +57,7 @@ const [clicked, setclicked] = useState(false);
 
   return (
     <>
-    {/* {clicked && <AddPost onAddPost={setPostContent} onBTNCLICK={addPOST} />} */}
+    {clicked && <AddPost onAddPost={setPostContent} onBTNCLICK={addPOST} />}
       <div >
         <div >
           
@@ -74,7 +74,7 @@ const [clicked, setclicked] = useState(false);
             <Post data={post}/>
           </Fragment>
         ))}
-      <button type='button' onButton={addPOST} />
+      <button type='button' onClick={addPOST} />
    </>
   );
 };

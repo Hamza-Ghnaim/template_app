@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+// import classes from "../Posts/AddPost.module.css";
 
 const AddPost = (props) => {
   const [content, setContent] = useState({
